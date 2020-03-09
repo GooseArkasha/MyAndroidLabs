@@ -8,9 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/corgi"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="77dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        app:srcCompat="@drawable/dog" />
 </FrameLayout>
