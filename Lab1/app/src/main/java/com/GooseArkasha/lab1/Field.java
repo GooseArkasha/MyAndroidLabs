@@ -7,7 +7,7 @@ public class Field {
 
 
     private final static String[] singleDigit = new String[] {
-            "ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
+            "", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять",
     };
 
     private final static String[] doubleDigits = new String[] {
@@ -15,12 +15,12 @@ public class Field {
             "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать",
     };
     private final static String[] decades = new String[] {
-            "ноль", "десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят",
+            "", "десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят",
             "семьдесят", "восемьдесят", "девяносто"
     };
 
     private final static String[] hundreds = new String[] {
-            "ноль", "сто", "двести", "триста", "четыреста", "пятьсяот",
+            "", "сто", "двести", "триста", "четыреста", "пятьсяот",
             "шестьсот", "семьсот", "восемьсот", "девятьсот"
     };
 
@@ -36,25 +36,44 @@ public class Field {
 
     public void setNumber(int number) {
 
-        if(number >= 1 && number <= 9) {
-            this.number = singleDigit[number];
-        }
+        String temp = Integer.toString(number);
+        this.number = "";
 
-        if(number >= 10 && number <= 19) {
-            this.number = doubleDigits[number % 10];
-        }
-
-        if(number >= 20 && number <= 99) {
-            if(number / 10 == 0) {
-                this.number = decades[number / 10];
-            } else {
-                String temp = new String(singleDigit[number % 10]);
-                this.number = decades[number / 10] + temp;
-            }
-        }
-
-        if(number > 99) {
-            this.number = "гусь";
+        switch (temp.length()) {
+            case 7:
+                this.number = "миллион";
+                break;
+            case 6:
+                this.number = hundreds[temp.charAt(5) - 48];
+            case 5:
+                if(temp.charAt(4) - 48 != 1) {
+                    this.number = this.number + decades[temp.charAt(4) - 48];
+                }
+            case 4:
+                if(temp.length() > 4) {
+                    if(temp.charAt(4) - 48 == 1) {
+                        this.number = this.number + doubleDigits[temp.charAt(3) - 48] + thousands[0];
+                    } else {
+                        this.number = this.number + thousands[temp.charAt(3) - 48];
+                    }
+                } else {
+                    this.number = this.number + thousands[temp.charAt(3) - 48];
+                }
+            case 3:
+                this.number = this.number + hundreds[temp.charAt(2) - 48];
+            case 2:
+                if(temp.charAt(1) - 48 != 1) {
+                    this.number = this.number + decades[temp.charAt(1) - 48];
+                }
+            case 1:
+                if(temp.charAt(1) - 48 == 1) {
+                    this.number = this.number + doubleDigits[temp.charAt(0) - 48] + thousands[0];
+                } else {
+                    this.number = this.number + singleDigit[temp.charAt(0) - 48];
+                }
+                break;
+            default:
+                this.number = "Error";
         }
     }
 
