@@ -29,12 +29,11 @@ public class SplashScreen extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.d(TAG, "Sleep Eror");
                 }
+
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
             }
         });
         thread.start();
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 }

@@ -37,44 +37,44 @@ public class Field {
     public void setNumber(int number) {
 
         String temp = Integer.toString(number);
-        this.number = "";
+        this.number = "123";
 
-        switch (temp.length()) {
-            case 7:
-                this.number = "миллион";
-                break;
-            case 6:
-                this.number = hundreds[temp.charAt(5) - 48];
-            case 5:
-                if(temp.charAt(4) - 48 != 1) {
-                    this.number = this.number + decades[temp.charAt(4) - 48];
-                }
-            case 4:
-                if(temp.length() > 4) {
-                    if(temp.charAt(4) - 48 == 1) {
-                        this.number = this.number + doubleDigits[temp.charAt(3) - 48] + thousands[0];
-                    } else {
-                        this.number = this.number + thousands[temp.charAt(3) - 48];
-                    }
-                } else {
-                    this.number = this.number + thousands[temp.charAt(3) - 48];
-                }
-            case 3:
-                this.number = this.number + hundreds[temp.charAt(2) - 48];
-            case 2:
-                if(temp.charAt(1) - 48 != 1) {
-                    this.number = this.number + decades[temp.charAt(1) - 48];
-                }
-            case 1:
-                if(temp.charAt(1) - 48 == 1) {
-                    this.number = this.number + doubleDigits[temp.charAt(0) - 48] + thousands[0];
-                } else {
-                    this.number = this.number + singleDigit[temp.charAt(0) - 48];
-                }
-                break;
-            default:
-                this.number = "Error";
-        }
+//        switch (temp.length()) {
+//            case 7:
+//                this.number = "миллион";
+//                break;
+//            case 6:
+//                this.number = hundreds[temp.charAt(0) - 48];
+//            case 5:
+//                if(temp.charAt(4) - 48 != 1) {
+//                    this.number = this.number + decades[temp.charAt(4) - 48];
+//                }
+//            case 4:
+//                if(temp.length() > 4) {
+//                    if(temp.charAt(4) - 48 == 1) {
+//                        this.number = this.number + doubleDigits[temp.charAt(3) - 48] + thousands[0];
+//                    } else {
+//                        this.number = this.number + thousands[temp.charAt(3) - 48];
+//                    }
+//                } else {
+//                    this.number = this.number + thousands[temp.charAt(3) - 48];
+//                }
+//            case 3:
+//                this.number = this.number + hundreds[temp.charAt(2) - 48];
+//            case 2:
+//                if(temp.charAt(1) - 48 != 1) {
+//                    this.number = this.number + decades[temp.charAt(1) - 48];
+//                }
+//            case 1:
+//                if(temp.charAt(1) - 48 == 1) {
+//                    this.number = this.number + doubleDigits[temp.charAt(0) - 48] + thousands[0];
+//                } else {
+//                    this.number = this.number + singleDigit[temp.charAt(0) - 48];
+//                }
+//                break;
+//            default:
+//                this.number = "Error";
+//        }
     }
 
     public String getNumber() {
