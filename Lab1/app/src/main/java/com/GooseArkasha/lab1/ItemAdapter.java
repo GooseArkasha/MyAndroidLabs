@@ -34,6 +34,12 @@ public class ItemAdapter extends ArrayAdapter<Field>{
 
         CorgiView.setImageResource(field.getImageResource());
         numberView.setText(field.getNumber());
+
+        if(position % 2 == 0) {
+            view.setBackgroundResource(R.color.white);
+        } else {
+            view.setBackgroundResource(R.color.gray);
+        }
         return view;
     }
 
