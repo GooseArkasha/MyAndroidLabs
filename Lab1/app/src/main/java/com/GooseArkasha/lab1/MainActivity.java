@@ -31,4 +31,9 @@ public class MainActivity extends AppCompatActivity {
             fields.add(new Field(i + 1, R.drawable.minicorgi));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
